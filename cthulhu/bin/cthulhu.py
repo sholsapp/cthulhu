@@ -36,10 +36,13 @@ class FixtureContext(object):
   A fixture context is a distributed control framework codified onto the file
   system and runnable through docker.
 
+  :param str root: The root directory in which to create the fixture.
+  :param str name: The name of the fixture.
+
   """
-  def __init__(self, root):
+  def __init__(self, root, name):
     self.instances = []
-    self.fixture_root = os.path.join(root, 'cthulhu-fixture')
+    self.fixture_root = os.path.join(root, name)
     self.fixture_control = os.path.join(self.fixture_root, 'control')
     os.makedirs(self.fixture_root)
 
@@ -212,7 +215,9 @@ echo $PID > {{ local_root }}/pid.txt
               help='The docker container to wire into the distributed test fixture.')
 @click.option('--fixture-root', default=os.getcwd(),
               help='Path to file system root directory at which to create the fixture.')
-def main(instances, docker_bridge, docker_container, fixture_root):
+@click.option('--fixture-name', default='cthulhu-fixture',
+              help='Name of the fixture and directory to create.')
+def main(instances, docker_bridge, docker_container, fixture_root, fixture_name):
 
   try:
     addrs = netifaces.ifaddresses(docker_bridge)
@@ -229,7 +234,7 @@ def main(instances, docker_bridge, docker_container, fixture_root):
   network = list(IPRange(docker_bridge_addr + 1,
                          docker_bridge_addr + 1 + instances - 1))
 
-  fixture_ctx = FixtureContext(fixture_root)
+  fixture_ctx = FixtureContext(fixture_root, fixture_name)
   for instance in range(0, len(network)):
     # TODO(sholsapp): We might want to specify different containers for
     # different instances one day.
