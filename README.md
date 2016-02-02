@@ -1,5 +1,9 @@
 # cthulhu
 
+<a href="https://travis-ci.org/core-labs/cthulhu">
+<img src='https://img.shields.io/travis/core-labs/cthulhu/master.svg?style=flat-square' />
+</a>
+
 A distributed system testing framework that is portable and easy to use.
 
 > The cthulhu test framework is a distributed testing framework that should be
