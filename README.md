@@ -27,7 +27,8 @@ cthulhu -h
 ```
 
 You'll see that the framework creates a fixture on disk for you that you can
-leverage in your correctness tests using a system such as bats.
+leverage in your correctness tests using a system such as
+[bats](https://github.com/sstephenson/bats).
 
 ```
 cthulhu-fixture/
