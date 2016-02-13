@@ -3,7 +3,7 @@
 A distributed system testing framework that is portable and easy to use.
 
 > The cthulhu test framework is a distributed testing framework that should be
-> used for correctness testing, not performance testsing, as the underlying bin
+> used for correctness testing, not performance testing, as the underlying bin
 > packing, deployment, and monitoring system offered by this framework uses
 > Docker under the hood.
 
@@ -60,6 +60,20 @@ cthulhu-fixture/
 ├── i002 -> /home/ubuntu/workspace/gallocy/cthulhu-fixture/172.17.0.3
 └── i003 -> /home/ubuntu/workspace/gallocy/cthulhu-fixture/172.17.0.4
 ```
+
+A few key take aways from this output are:
+
+1. Each *node* in the topology is assigned its own IP address that is
+represented as a directory.
+2. Each *node* in the topology is assigned a short name, e.g., i001, i002,
+i003, which corresponds to an IP address. These short names can also be used
+with the docker command line.
+3. Each *node* in the topology automatically has two bindmounts created: `etc`
+and `var`. These can be used to pass configuration or retrieve logs from the
+*node*.
+4. Each *node* has a `control` script that takes a `start` or `stop` command to
+start or stop the container, respectively.
+5. The topmost `control` script starts or stops all of the containers.
 
 ## about
 
