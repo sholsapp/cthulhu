@@ -23,11 +23,35 @@ exposing your distributed system as a filesystem.
 
 ## getting started
 
-To create a cthulhu test fixture, build the Python project and run the main
-command.
+You will need to install
+[virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) if it
+isn't already installed. You may need to use your native package manager to
+install this if `pip` isn't available on your system. For example, on Ubuntu
+you'll need to run `apt-get install python-virtualenv`.
+
+Create and activate a virtual environment for the cthulhu project using
+`virtualenv`. You can create your virtual environment anywhere you want, but I
+usually use `~/.venvs`.
+
+```
+cd cthulhu
+virtualenv ~/.venvs/cthulhu
+source ~/.venvs/cthulhu/activate
+python setup.py develop
+```
+
+Now you can run `cthulhu`.
 
 ```
 cthulhu -h
+```
+
+## fixtures
+
+Use cthulhu to create *distributed test fixtures*.
+
+```
+cthulhu --instances 3 --docker-container example-container
 ```
 
 You'll see that the framework creates a fixture on disk for you that you can
