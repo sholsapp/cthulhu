@@ -30,13 +30,12 @@ install this if `pip` isn't available on your system. For example, on Ubuntu
 you'll need to run `apt-get install python-virtualenv`.
 
 Create and activate a virtual environment for the cthulhu project using
-`virtualenv`. You can create your virtual environment anywhere you want, but I
-usually use `~/.venvs`.
+`virtualenv`.
 
 ```
 cd cthulhu
-virtualenv ~/.venvs/cthulhu
-source ~/.venvs/cthulhu/activate
+python setup.py virtualenv
+source activate
 python setup.py develop
 ```
 
