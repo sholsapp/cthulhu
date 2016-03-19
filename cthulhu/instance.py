@@ -18,6 +18,7 @@ class InstanceContext(object):
         self.network = list(network)
         self.container = container
         self.node_root = os.path.join(root, str(self.network[self.instance]))
+        self.exposed = 30000 + self.instance
         self.node_bindmounts = os.path.join(self.node_root, 'bindmounts')
         self.node_etc = os.path.join(self.node_bindmounts, 'etc')
         self.node_var = os.path.join(self.node_bindmounts, 'var')
@@ -44,6 +45,10 @@ class InstanceContext(object):
     def instance_name(self):
         return self.formatted_instance()
 
+    @property
+    def ip(self):
+        return str(self.network[self.instance])
+
     def render(self):
         self.write_file(self.node_config,
                         self.render_config())
@@ -56,16 +61,15 @@ class InstanceContext(object):
         # TODO(sholsapp): How can we make this generic but meaningful? We always will
         # need to know a little bit about the application here, so maybe we should
         # ask for a fixture.spec or something?
-        ip = self.network[self.instance]
         return json.dumps({
-            'self': str(ip),
+            'self': self.ip,
             'port': 8080,
-            'master': True if ip == self.network[0] else False,
-            'peers': [str(n) for n in self.network if n != ip],
+            'master': True if self.ip == self.network[0] else False,
+            'peers': [str(n) for n in self.network if n != self.ip],
         }, indent=2)
 
     def render_control(self):
-        host_port = 30000 + self.instance
+        host_port = self.exposed
         host_name = self.instance_name
         env = Environment(loader=PackageLoader('cthulhu', 'templates'))
         template = env.get_template('instance-control.sh')
