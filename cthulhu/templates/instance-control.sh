@@ -10,17 +10,17 @@ sub_help() {
 }
 
 sub_start() {
-  PID=$(docker run \\
-    --privileged=true \\
-    --name {{ name }} \\
-    --interactive \\
-    --tty \\
-    --detach \\
-    --publish={{ host_port }}:8080 \\
-    --hostname={{ host_name }} \\
-    --volume={{ local_etc }}:/home/gallocy/etc \\
-    --volume={{ local_var }}:/home/gallocy/var \\
-    --memory=16M \\
+  PID=$(docker run \
+    --privileged=true \
+    --name {{ name }} \
+    --interactive \
+    --tty \
+    --detach \
+    --publish={{ host_port }}:8080 \
+    --hostname={{ host_name }} \
+    --volume={{ local_etc }}:/home/gallocy/etc \
+    --volume={{ local_var }}:/home/gallocy/var \
+    --memory=16M \
     {{ docker_container }})
   echo $PID > {{ local_root }}/pid.txt
 }
