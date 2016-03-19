@@ -65,7 +65,7 @@ class InstanceContext(object):
             'self': self.ip,
             'port': 8080,
             'master': True if self.ip == self.network[0] else False,
-            'peers': [str(n) for n in self.network if n != self.ip],
+            'peers': [str(n) for n in self.network if str(n) != self.ip],
         }, indent=2)
 
     def render_control(self):
