@@ -9,7 +9,7 @@ from setuptools import setup, find_packages, Command
 
 entry_points = {
     'console_scripts': [
-        'cthulhu = cthulhu.bin.cthulhu:main',
+        'cthulhu = cthulhu.bin.cli:main',
     ],
 }
 
