@@ -1,7 +1,7 @@
 import click
 from click.testing import CliRunner
 
-from cthulhu.bin.cthulhu import main
+from cthulhu.bin.cli import main
 
 def test_cthulhu():
   runner = CliRunner()
