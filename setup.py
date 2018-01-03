@@ -92,7 +92,7 @@ setup(
         "pex",
         "requests",
         "tabulate",
-        "wheel",
+        "wheel<0.30.0",
     ],
     tests_require=[
         'flake8',
