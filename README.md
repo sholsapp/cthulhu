@@ -1,6 +1,6 @@
 # cthulhu
 
-<a href="https://travis-ci.org/corelabsio/cthulhu">
+<a href="https://travis-ci.org/sholsapp/cthulhu">
 <img src='https://img.shields.io/travis/corelabsio/cthulhu/master.svg?style=flat-square' />
 </a>
 
