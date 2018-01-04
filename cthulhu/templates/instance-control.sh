@@ -18,10 +18,10 @@ sub_start() {
     --detach \
     --publish={{ host_port }}:8080 \
     --hostname={{ host_name }} \
-    --volume={{ local_etc }}:/home/gallocy/etc \
-    --volume={{ local_var }}:/home/gallocy/var \
+    --volume={{ local_etc }}:/opt/app/etc \
+    --volume={{ local_var }}:/opt/app/var \
     --memory=16M \
-    {{ docker_container }})
+    {{ docker_image }})
   echo $PID > {{ local_root }}/pid.txt
 }
 

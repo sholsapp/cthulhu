@@ -37,13 +37,13 @@ log = logging.getLogger(__name__)
               help='The number of instances to create skeletons for.')
 @click.option('--docker-bridge', default='docker0',
               help='The docker bridge network within which to create the distributed test fixture.')
-@click.option('--docker-container', default='gallocy-example',
-              help='The docker container to wire into the distributed test fixture.')
+@click.option('--docker-image', default='app',
+              help='The docker image to wire into the distributed test fixture.')
 @click.option('--fixture-root', default=os.getcwd(),
               help='Path to file system root directory at which to create the fixture.')
 @click.option('--fixture-name', default='cthulhu-fixture',
               help='Name of the fixture and directory to create.')
-def main(instances, docker_bridge, docker_container, fixture_root, fixture_name):
+def main(instances, docker_bridge, docker_image, fixture_root, fixture_name):
 
     try:
         addrs = netifaces.ifaddresses(docker_bridge)
@@ -72,7 +72,7 @@ def main(instances, docker_bridge, docker_container, fixture_root, fixture_name)
         # TODO(sholsapp): We might want to specify different containers for
         # different instances one day.
         instance_ctx = InstanceContext(
-            fixture_ctx.fixture_root, instance, network, docker_container)
+            fixture_ctx.fixture_root, instance, network, docker_image)
         click.secho('Creating instance {0} at {1}... '.format(
             instance_ctx.instance, instance_ctx.node_root), nl=False)
         fixture_ctx.instances.append(instance_ctx)

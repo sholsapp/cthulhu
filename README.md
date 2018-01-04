@@ -16,10 +16,8 @@ the hooks you need to test your distributed system. Often, the testing
 framework itself requires that you write in a particular language, using a
 particular sytax, using a custom framework. What's more, if you're application
 isn't written in a way that lends itself to inspection, you're mostly out of
-luck.
-
-The cthulhu distributed system testing frameworks seeks to keep it simple by
-exposing your distributed system as a filesystem.
+luck. The cthulhu distributed system testing frameworks seeks to keep it simple
+by exposing your distributed system as a filesystem.
 
 ## getting started
 
@@ -50,7 +48,7 @@ cthulhu -h
 Use cthulhu to create *distributed test fixtures*.
 
 ```
-cthulhu --instances 3 --docker-container example-container
+cthulhu --instances 3 --docker-image hello-world
 ```
 
 You'll see that the framework creates a fixture on disk for you that you can
@@ -103,9 +101,12 @@ and `var`. These can be used to pass configuration or retrieve logs from the
 start or stop the container, respectively.
 5. The topmost `control` script starts or stops all of the containers.
 
+See the [sample](./sample) directory for additional exploration of the above
+example.
+
 ## about
 
-I started cthulhu to test [https://github.com/sholsapp/gallocy](gallocy), a
+I started cthulhu to test [gallocy](https://github.com/sholsapp/gallocy), a
 distributed shared memory system. Other distributed system testing frameworks
 suffered from the problems I mentioned above, so I caved in and wrote my own.
 

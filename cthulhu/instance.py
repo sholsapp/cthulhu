@@ -13,10 +13,10 @@ class InstanceContext(object):
 
     """
 
-    def __init__(self, root, instance, network, container):
+    def __init__(self, root, instance, network, image):
         self.instance = instance
         self.network = list(network)
-        self.container = container
+        self.image = image
         self.node_root = os.path.join(root, str(self.network[self.instance]))
         self.exposed = 30000 + self.instance
         self.node_bindmounts = os.path.join(self.node_root, 'bindmounts')
@@ -77,7 +77,7 @@ class InstanceContext(object):
         # need to know a little bit about the application here, so maybe we should
         # ask for a fixture.spec or something?
         return template.render(
-            docker_container=self.container,
+            docker_image=self.image,
             host_name=host_name,
             host_port=host_port,
             local_etc=self.node_etc,
