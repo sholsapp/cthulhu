@@ -1,0 +1,45 @@
+#!/bin/bash -x
+
+# GENERATED CONTROL SCRIPT
+
+sub_help() {
+  echo "Usage: control <subcommand> [options]"
+  echo "Subcommands:"
+  echo "    start"
+  echo "    stop"
+}
+
+sub_start() {
+  PID=$(docker run \
+    --privileged=true \
+    --name i002 \
+    --interactive \
+    --tty \
+    --detach \
+    --publish=30001:8080 \
+    --hostname=i002 \
+    --volume=/home/sholsapp/workspace/cthulhu/cthulhu-fixture/172.17.0.3/bindmounts/etc:/home/gallocy/etc \
+    --volume=/home/sholsapp/workspace/cthulhu/cthulhu-fixture/172.17.0.3/bindmounts/var:/home/gallocy/var \
+    --memory=16M \
+    hello-world)
+  echo $PID > /home/sholsapp/workspace/cthulhu/cthulhu-fixture/172.17.0.3/pid.txt
+}
+
+sub_stop() {
+  docker stop -t 1 i002
+}
+
+SUBCOMMAND=$1
+case $SUBCOMMAND in
+  "" | "-h" | "--help")
+    sub_help
+    ;;
+  *)
+    shift
+    sub_${SUBCOMMAND} $@
+    if [ $? = 127 ]; then
+      echo "Error: '$SUBCOMMAND' is not a known subcommand." >&2
+      exit 1
+    fi
+    ;;
+esac
