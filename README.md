@@ -1,7 +1,7 @@
 # cthulhu
 
 <a href="https://travis-ci.org/sholsapp/cthulhu">
-<img src='https://img.shields.io/travis/corelabsio/cthulhu/master.svg?style=flat-square' />
+<img src='https://img.shields.io/travis/sholsapp/cthulhu/master.svg?style=flat-square' />
 </a>
 
 A distributed system testing framework that is portable and easy to use.
