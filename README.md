@@ -4,7 +4,7 @@
 <img src='https://img.shields.io/travis/sholsapp/cthulhu/master.svg?style=flat-square' />
 </a>
 
-A distributed system testing framework that is portable and easy to use.
+A container-based distributed system testing framework that is portable and easy to use.
 
 > The cthulhu test framework is a distributed testing framework that should be
 > used for correctness testing, not performance testing, as the underlying bin
@@ -36,6 +36,10 @@ python setup.py virtualenv
 source activate
 python setup.py develop
 ```
+
+Next, you'll need to make sure that docker (eek!) is available on your platform
+and runnable by a non-root user. Follow docker's instructions online to download
+install and configure docker on your platform.
 
 Now you can run `cthulhu`.
 
