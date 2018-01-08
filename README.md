@@ -4,7 +4,8 @@
 <img src='https://img.shields.io/travis/sholsapp/cthulhu/master.svg?style=flat-square' />
 </a>
 
-A container-based distributed system testing framework that is portable and easy to use.
+A container-based distributed system testing framework that is portable and easy
+to use locally.
 
 > The cthulhu test framework is a distributed testing framework that should be
 > used for correctness testing, not performance testing, as the underlying bin
