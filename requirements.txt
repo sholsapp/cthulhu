@@ -10,6 +10,6 @@ netifaces==0.10.6
 pex==1.2.15
 requests==2.18.4
 tabulate==0.8.2
-urllib3==1.22
+urllib3==1.24.2
 wheel==0.29.0
 wsgiref==0.1.2
